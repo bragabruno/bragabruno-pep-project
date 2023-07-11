@@ -254,7 +254,7 @@ public class SocialMediaController {
             ObjectMapper mapper = new ObjectMapper();
             context.status(200).json(mapper.writeValueAsString(deletedMessage));
         } else {
-            context.status(400).result("");
+            context.status(200).result("");
         }
     }
 }
