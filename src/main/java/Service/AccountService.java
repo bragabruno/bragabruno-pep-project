@@ -21,8 +21,17 @@ public class AccountService {
         }
     }
 
+//    public Account accountLogin(Account account) {
+//        return accountDAO.accountLogin(account);
+//    }
+
     public Account accountLogin(Account account) {
-        return accountDAO.accountLogin(account);
+        Account existingAccount = accountDAO.getAccountByUsername(account.getUsername());
+        if (existingAccount != null && existingAccount.getPassword().equals(account.getPassword())) {
+            return existingAccount;
+        } else {
+            return null;
+        }
     }
 
     public List<Account> getAllAccounts() {
@@ -36,5 +45,13 @@ public class AccountService {
     private boolean isPasswordValid(String password) {
         int minLength = 4; // minimum password length
         return password != null && password.length() >= minLength;
+    }
+
+    public Account getAccountById(int postedBy) {
+        return accountDAO.getAccountById(postedBy);
+    }
+
+    public boolean updateMessageText(int messageId, String messageText) {
+        return accountDAO.updateMessageText(messageId, messageText);
     }
 }

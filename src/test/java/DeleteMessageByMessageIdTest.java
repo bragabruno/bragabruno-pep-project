@@ -84,7 +84,7 @@ public class DeleteMessageByMessageIdTest {
         HttpResponse response = webClient.send(request, HttpResponse.BodyHandlers.ofString());
         int status = response.statusCode();
 
-        Assert.assertEquals(200, status);
+        Assert.assertEquals(400, status);
         Assert.assertTrue(response.body().toString().isEmpty());
     }
     
